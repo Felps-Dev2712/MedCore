@@ -68,7 +68,7 @@ WSGI_APPLICATION = "medcore_api.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("DB_NAME", BASE_DIR / "db.sqlite3"),
+        "NAME": os.environ.get("DB_NAME", BASE_DIR / "data" / "db.sqlite3"),
         "USER": os.environ.get("DB_USER", ""),
         "PASSWORD": os.environ.get("DB_PASSWORD", ""),
         "HOST": os.environ.get("DB_HOST", ""),
@@ -101,10 +101,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ── CORS ─────────────────────────────────────────────────────────────────────
 
-CORS_ALLOWED_ORIGINS = os.environ.get(
-    "CORS_ALLOWED_ORIGINS",
-    "http://localhost:4200,http://127.0.0.1:4200",
-).split(",")
+_cors_env = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:4200,http://127.0.0.1:4200")
+if _cors_env.strip() == "*":
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    CORS_ALLOWED_ORIGINS = _cors_env.split(",")
 
 # ── DRF ──────────────────────────────────────────────────────────────────────
 
