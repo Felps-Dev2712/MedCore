@@ -1,0 +1,42 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.sqlite3
+backend/staticfiles/
+
+# ── Node ─────────────────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.angular/
+
+# ── IDE ──────────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Env ──────────────────────────────────────────────────────────────────────
+.env
+*.env.local
+
+# ── Docker ───────────────────────────────────────────────────────────────────
+docker-compose.override.yml
+
+# ── Agent Artifacts ──────────────────────────────────────────────────────────
+best-practices.md
+skills-lock.json
+*.plan.md
+.superpowers/
+.agents/
+.claude/
+MEMORY.md
+memory/
+Trabalho_FullStack_SistemaHospitalar.pdf
