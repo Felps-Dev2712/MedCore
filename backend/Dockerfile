@@ -1,5 +1,8 @@
 FROM python:3.12-slim
 
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
 COPY requirements.txt .
@@ -12,5 +15,5 @@ RUN python manage.py collectstatic --noinput 2>/dev/null || true
 
 EXPOSE 8000
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["gunicorn", "medcore_api.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
